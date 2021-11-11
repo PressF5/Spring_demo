@@ -17,26 +17,26 @@ public class InventoryApplication {
 		InventoryService service = context.getBean("inventoryService", InventoryService.class);
 
 		Item item1 = new Item();
-		item1.setNumber(1234567L);
+		item1.setNumber(1234567);
 		item1.setDescription("Монитор");
 		item1.setCountItems(5);
 
 		Item item2 = new Item();
-		item1.setNumber(9876543L);
-		item1.setDescription("Системник");
-		item1.setCountItems(2);
+		item2.setNumber(9876543);
+		item2.setDescription("Системник");
+		item2.setCountItems(2);
 
 		Item item3 = new Item();
-		item1.setNumber(9182736L);
-		item1.setDescription("Клавиатура");
-		item1.setCountItems(20);
+		item3.setNumber(9182736);
+		item3.setDescription("Клавиатура");
+		item3.setCountItems(20);
 
 		List<Item> itemList = List.of(item1, item2, item3);
 
 		Office office = new Office();
 
-		office.setOfficeNumber(308);
-		office.setItemList(itemList);
+		office.setOfficeNumber(400);
+		office.setItemsToOffice(itemList);
 
 		service.addInventory(office);
 	}

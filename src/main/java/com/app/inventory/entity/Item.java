@@ -12,9 +12,9 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    @Column(name = "number", nullable = false)
-    private Long number;
-    @Column(name = "description", nullable = true)
+    @Column(name = "inventory_number", nullable = false)
+    private int number;
+    @Column(name = "description_item", nullable = true)
     private String description;
     @Column(name = "count_items", nullable = false)
     private int countItems;

@@ -4,9 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table(name = "offices")
@@ -18,9 +16,13 @@ public class Office {
     private Long id;
     @Column(name = "office_number", nullable = false)
     private int officeNumber;
-    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_office")
+    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER, mappedBy = "office")
     private List<Item> itemList;
+
+    public void setItemsToOffice(List<Item> item) {
+        this.itemList = item;
+        item.forEach(it -> {it.setOffice(this);});
+    }
 
 //    public void addItemToOffice(Item item) {
 //        if(Objects.nonNull(itemList))

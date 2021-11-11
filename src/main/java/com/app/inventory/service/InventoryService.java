@@ -1,6 +1,5 @@
 package com.app.inventory.service;
 
-import com.app.inventory.entity.Item;
 import com.app.inventory.entity.Office;
 import com.app.inventory.repository.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
