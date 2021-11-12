@@ -13,16 +13,16 @@ public class Office {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private int id;
     @Column(name = "office_number", nullable = false)
     private int officeNumber;
     @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER, mappedBy = "office")
     private List<Item> itemList;
 
-    public void setItemsToOffice(List<Item> item) {
-        this.itemList = item;
-        item.forEach(it -> {it.setOffice(this);});
-    }
+//    public void setItemsToOffice(List<Item> item) {
+//        this.itemList = item;
+//        item.forEach(it -> {it.setOffice(this);});
+//    }
 
 //    public void addItemToOffice(Item item) {
 //        if(Objects.nonNull(itemList))

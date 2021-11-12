@@ -1,0 +1,32 @@
+use inventory;
+
+INSERT INTO items(inventory_number, description_item, count_items, id_office)
+VALUES (1137007, "Монитор TFT 17", 4, 1);
+
+INSERT INTO offices(office_number)
+VALUES (308);
+
+select o.id, o.office_number, i.number, i.description, i.count_items 
+from offices as o left join items as i on o.id_items = i.id 
+where o.office_number = 308;
+
+select * from items;
+select * from offices;
+
+ALTER TABLE offices DROP COLUMN id_items;
+
+DELETE FROM offices WHERE office_number = 400;
+
+CREATE TABLE offices (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    office_number INT NOT NULL UNIQUE
+);
+
+CREATE TABLE items (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    inventory_number INT NOT NULL,
+    description_item VARCHAR(300),
+    count_items INT NOT NULL,
+    id_office INT NOT NULL,
+    FOREIGN KEY (id_office) REFERENCES offices (id)
+);

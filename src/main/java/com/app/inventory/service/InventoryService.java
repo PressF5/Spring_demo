@@ -1,5 +1,6 @@
 package com.app.inventory.service;
 
+import com.app.inventory.entity.Item;
 import com.app.inventory.entity.Office;
 import com.app.inventory.repository.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,8 @@ public class InventoryService {
     private InventoryRepository inventoryRepository;
 
     @Transactional
-    public void addInventory(Office office) {
-        inventoryRepository.saveInventory(office);
+    public void addInventory(Item item) {
+        inventoryRepository.saveInventory(item);
     }
 
 }
