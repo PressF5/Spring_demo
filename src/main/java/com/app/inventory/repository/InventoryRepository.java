@@ -28,7 +28,6 @@ public class InventoryRepository {
                 createQuery("select new Item(i.id, i.number, i.description, i.countItems, io.id, io.officeNumber) from Item i left join i.office io where i.number = :invNumber and io.officeNumber = :officeNumber", Item.class).
                 setParameter("invNumber", invNumber).
                 setParameter("officeNumber", fromOffice);
-        System.out.println(query.getResultList());
         if(query.getResultList().size() != 0) {
             int leftCountItem = query.getSingleResult().getCountItems() - countItems;
             if(leftCountItem > 0) {
@@ -36,7 +35,6 @@ public class InventoryRepository {
                 item.setNumber(query.getSingleResult().getNumber());
                 item.setDescription(query.getSingleResult().getDescription());
                 item.setCountItems(countItems);
-
                 Office office = new Office();
                 //toOffice
                 TypedQuery<Office> officeHQL = entityManager.createQuery("from Office o where o.officeNumber = :officeNumber", Office.class);
@@ -55,7 +53,9 @@ public class InventoryRepository {
                         executeUpdate();
             }
             else if(leftCountItem == 0) {
-
+                int id = query.getSingleResult().getId();
+                // Обновить внешний ключ(т.е. офис) у инвентаря если переносят весь инвентарь из кабинета в (существующий)кабинет
+                // И создать новый офис на тот случай если переносится все в новый офис но его нет в БД
             }
         }
 
