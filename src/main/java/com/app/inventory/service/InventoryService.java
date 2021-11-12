@@ -17,4 +17,7 @@ public class InventoryService {
         inventoryRepository.saveInventory(item);
     }
 
+    @Transactional
+    public void moveInventory(int invNumber, int fromOffice, int toOffice, int countItems) { inventoryRepository.moveInventory(invNumber, fromOffice, toOffice, countItems); }
+
 }

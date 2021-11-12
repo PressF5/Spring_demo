@@ -16,33 +16,29 @@ public class InventoryApplication {
 		ConfigurableApplicationContext context = SpringApplication.run(InventoryApplication.class, args);
 		InventoryService service = context.getBean("inventoryService", InventoryService.class);
 
-		Item item1 = new Item();
-		item1.setNumber(1234567);
-		item1.setDescription("Монитор_LG");
-		item1.setCountItems(5);
-
-		Item item2 = new Item();
-		item2.setNumber(9876543);
-		item2.setDescription("Системник");
-		item2.setCountItems(2);
+//		Item item1 = new Item();
+//		item1.setNumber(1234567);
+//		item1.setDescription("Монитор_LG");
+//		item1.setCountItems(5);
 //
-//		Item item3 = new Item();
-//		item3.setNumber(9182736);
-//		item3.setDescription("Клавиатура");
-//		item3.setCountItems(20);
+//		Item item2 = new Item();
+//		item2.setNumber(9876543);
+//		item2.setDescription("Системник");
+//		item2.setCountItems(2);
+//
+//		Office office = new Office();
+//		office.setOfficeNumber(400);
+//
+//		item1.setOffice(office);
+//		item2.setOffice(office);
+//
+//		service.addInventory(item1);
+//		service.addInventory(item2);
 
-//		List<Item> itemList = List.of(item1, item2, item3);
+		service.moveInventory(1137007, 400, 500, 1);
+		service.moveInventory(1137007, 400, 600, 1);
 
-		Office office = new Office();
-		office.setOfficeNumber(400);
 
-		item1.setOffice(office);
-		item2.setOffice(office);
-
-//		office.setItemsToOffice(itemList);
-
-		service.addInventory(item1);
-		service.addInventory(item2);
 	}
 
 }
