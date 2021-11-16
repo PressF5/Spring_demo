@@ -78,7 +78,8 @@ public class InventoryRepository {
 //                entityManager.createQuery("delete from Item where id = :iid").setParameter("iid", query.getSingleResult().getId());
 //                System.out.println(query.getSingleResult().getId());
 //                entityManager.merge(item);
-                  entityManager.createNativeQuery("update items set id_office = " + officeHQL.getSingleResult().getId() + "where id = " + query.getSingleResult().getId());
+                  entityManager.createNativeQuery("update items set id_office = " + officeHQL.getSingleResult().getId() + " where id = " + query.getSingleResult().getId()).executeUpdate();
+//                System.out.println(officeHQL.getSingleResult().getId() + " === " + query.getSingleResult().getId());
 //                entityManager.
 //                        createQuery("UPDATE Item set Office.id = :idOffice WHERE id = :id").
 //                        setParameter("idOffice", officeHQL.getSingleResult().getId()).
