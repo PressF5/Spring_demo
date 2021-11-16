@@ -38,3 +38,5 @@ CREATE TABLE items (
 
 http://hibernate-refdoc.3141.ru/
 https://www.javaguides.net/2018/11/hibernate-query-language-insert-update.html
+http://javainsimpleway.com/hql-insertupdateselect-and-delete-examples/
+https://howtodoinjava.com/spring-boot2/hibernate-configuration-example/

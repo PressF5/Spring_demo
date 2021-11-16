@@ -27,7 +27,7 @@ public class InventoryApplication {
 //		item2.setCountItems(2);
 //
 //		Office office = new Office();
-//		office.setOfficeNumber(400);
+//		office.setOfficeNumber(700);
 //
 //		item1.setOffice(office);
 //		item2.setOffice(office);
@@ -35,8 +35,8 @@ public class InventoryApplication {
 //		service.addInventory(item1);
 //		service.addInventory(item2);
 
-		service.moveInventory(1137007, 400, 500, 1);
-		service.moveInventory(1137007, 400, 600, 1);
+		service.moveInventory(1137007, 400, 500, 8);
+//		service.moveInventory(1137007, 400, 600, 1);
 
 
 	}
