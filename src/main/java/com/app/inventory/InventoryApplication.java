@@ -35,7 +35,7 @@ public class InventoryApplication {
 //		service.addInventory(item1);
 //		service.addInventory(item2);
 
-		service.moveInventory(1137007, 400, 500, 8);
+		service.moveInventory(1137007, 700, 1000, 8);
 //		service.moveInventory(1137007, 400, 600, 1);
 
 
