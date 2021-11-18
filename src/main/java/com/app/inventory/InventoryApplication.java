@@ -35,10 +35,15 @@ public class InventoryApplication {
 //		service.addInventory(item1);
 //		service.addInventory(item2);
 
-		service.moveInventory(1137007, 700, 1500, 8);
+//		service.moveInventory(1137007, 700, 1500, 8);
 //		service.moveInventory(1137007, 400, 600, 1);
 
+//		service.removeItemsFromOffice(1137007, 3, 500);
 
+		List<Item> items = service.getItemsByOffice(700);
+
+		for(Item it: items)
+			System.out.println("Number = " + it.getNumber() + " Description: " + it.getDescription() + " Count items = " + it.getCountItems());
 	}
 
 }
