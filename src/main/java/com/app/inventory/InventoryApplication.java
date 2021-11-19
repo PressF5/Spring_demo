@@ -1,16 +1,25 @@
 package com.app.inventory;
 
+import com.app.inventory.controller.MainController;
 import com.app.inventory.entity.Item;
-import com.app.inventory.entity.Office;
 import com.app.inventory.service.InventoryService;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.List;
 
-@SpringBootApplication
-public class InventoryApplication {
+@SpringBootApplication//(scanBasePackages = "com.app.inventory")
+//@EnableAutoConfiguration
+public class InventoryApplication {//extends SpringBootServletInitializer {
+//
+//	@Override
+//	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+//		return application.sources(InventoryApplication.class);
+//	}
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(InventoryApplication.class, args);
