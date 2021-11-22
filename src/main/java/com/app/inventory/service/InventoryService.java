@@ -15,7 +15,7 @@ public class InventoryService {
     private InventoryRepository inventoryRepository;
 
     @Transactional
-    public void addInventory(Item item) {
+    public void saveInventory(Item item) {
         inventoryRepository.saveInventory(item);
     }
 

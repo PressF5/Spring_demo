@@ -57,3 +57,5 @@ https://spring.io/guides/gs/handling-form-submission/
 
 https://github.com/YogenRaii/spring-examples/tree/master/spring-boot-jsp
 https://www.tutorialspoint.com/jsp/jsp_page_redirect.htm
+
+https://howtodoinjava.com/spring-mvc/spring-mvc-display-validate-and-submit-form-example/
