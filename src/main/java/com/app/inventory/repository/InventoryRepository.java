@@ -33,7 +33,7 @@ public class InventoryRepository {
         }
     }
 
-    public void moveInventory(int invNumber, int fromOffice, int toOffice, int countItems) {
+    public void moveInventory(int fromOffice, int toOffice, int invNumber, int countItems) {
 
         TypedQuery<Item> fromQuery = entityManager.
                 createQuery("select new Item(i.id, i.number, i.description, i.countItems, io.id, io.officeNumber) from Item i left join i.office io where i.number = :invNumber and io.officeNumber = :officeNumber", Item.class).
@@ -110,7 +110,7 @@ public class InventoryRepository {
         }
     }
 
-    public void removeItemFromOffice(int invNumber, int countItems, int fromOffice) {
+    public void removeItemFromOffice(int fromOffice, int invNumber, int countItems) {
         TypedQuery<Item> itemFromOffice = entityManager.
                 createQuery("select new Item(i.id, i.number, i.description, i.countItems, io.id, io.officeNumber) from Item i left join i.office io where i.number = :invNumber and io.officeNumber = :officeNumber", Item.class).
                 setParameter("invNumber", invNumber).

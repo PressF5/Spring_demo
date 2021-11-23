@@ -7,6 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -17,10 +21,6 @@ public class MainController {
     public String main() {
         return "main";
     }
-
-
-
-
 
     @RequestMapping("/addInventory")
     public String add(Model model) {
@@ -35,18 +35,28 @@ public class MainController {
         return "redirect:/addInventory";
     }
 
-
-
     @RequestMapping("/moveInventory")
     public String move() {
         return "moveItems";
+    }
+
+    @RequestMapping("/movedInventory")
+    public String moved(@RequestParam("fromOffice") int fromOffice, @RequestParam("toOffice") int toOffice,
+                        @RequestParam("invNumber") int invNumber, @RequestParam("countItems") int countItems) {
+        inventoryService.moveInventory(fromOffice, toOffice, invNumber, countItems);
+        return "redirect:/moveInventory";
     }
 
     @RequestMapping("/removeInventory")
     public String remove() {
         return "removeItems";
     }
-
+    @RequestMapping("/removedInventory")
+    public String removed(@RequestParam("fromOffice") int fromOffice, @RequestParam("invNumber") int invNumber,
+                          @RequestParam("countItems") int countItems) {
+        inventoryService.removeItemsFromOffice(fromOffice, invNumber, countItems);
+        return "redirect:/removeInventory";
+    }
 
 
 

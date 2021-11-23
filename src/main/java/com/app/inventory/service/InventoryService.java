@@ -20,10 +20,10 @@ public class InventoryService {
     }
 
     @Transactional
-    public void moveInventory(int invNumber, int fromOffice, int toOffice, int countItems) { inventoryRepository.moveInventory(invNumber, fromOffice, toOffice, countItems); }
+    public void moveInventory(int fromOffice, int toOffice, int invNumber, int countItems) { inventoryRepository.moveInventory(fromOffice, toOffice, invNumber, countItems); }
 
     @Transactional
-    public void removeItemsFromOffice(int invNumber,  int countItems, int fromOffice) {inventoryRepository.removeItemFromOffice(invNumber, countItems, fromOffice);}
+    public void removeItemsFromOffice(int fromOffice, int invNumber, int countItems) {inventoryRepository.removeItemFromOffice(fromOffice, invNumber, countItems);}
 
     @Transactional
     public List<Item> getItemsByOffice(int numberOffice) {return inventoryRepository.getItemsByOffice(numberOffice);}
