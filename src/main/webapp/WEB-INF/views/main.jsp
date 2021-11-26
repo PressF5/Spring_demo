@@ -1,16 +1,21 @@
 <html>
 <head>
 <style>
+
+body {
+    background: linear-gradient(to right,#2c5364, #203a43, #0f2027);
+}
+
 .button {
   display: inline-block;
-  border-radius: 10px;
+  border-radius: 4px;
   background-color: #008CBA;
   border: none;
   color: #FFFFFF;
   text-align: center;
   font-size: 28px;
   padding: 20px;
-  width: 100%;
+  width: 80%;
   transition: all 0.5s;
   cursor: pointer;
   margin-bottom: 5px;
@@ -42,12 +47,8 @@
 }
 
 .parent {
-text-align: center;
-  border-radius: 10px;
-  background-color: #f2f2f2;
-  padding: 20px;
+  text-align: center;
   width: 40%;
-
   position: absolute;
   left: 50%;
   top: 25%;
@@ -55,22 +56,22 @@ text-align: center;
 }
 h1{
   text-align: center;
+  color: lightblue;
 }
 </style>
 </head>
-    <body>
-
+<body>
 <div class=parent>
 <h1>Make a choose</h1>
 
         <button class="button" onclick="window.location.href='addInventory'" style="vertical-align:middle"><span>Add inventory to the office </span></button>
-        <br>
 
         <button class="button" onclick="window.location.href='moveInventory'" style="vertical-align:middle"><span>Move inventory from the office to the office </span></button>
-        <br>
 
         <button class="button" onclick="window.location.href='removeInventory'" style="vertical-align:middle"><span>Remove inventory from the office </span></button>
-        <br>
+
+        <button class="button" onclick="window.location.href='search'" style="vertical-align:middle"><span>Search </span></button>
+
         </div>
     </body>
 </html>

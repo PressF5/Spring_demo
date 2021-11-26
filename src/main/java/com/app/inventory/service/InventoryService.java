@@ -26,6 +26,10 @@ public class InventoryService {
     public void removeItemsFromOffice(int fromOffice, int invNumber, int countItems) {inventoryRepository.removeItemFromOffice(fromOffice, invNumber, countItems);}
 
     @Transactional
-    public List<Item> getItemsByOffice(int numberOffice) {return inventoryRepository.getItemsByOffice(numberOffice);}
-
+    public List<Item> getItemsByInvNumberOrOfficeNumber(int invNumberOrNumberOffice, String type) {
+        if("office".equals(type))
+            return inventoryRepository.getItemsByOffice(invNumberOrNumberOffice);
+        else
+            return inventoryRepository.getItemsByInvNumber(invNumberOrNumberOffice);
+    }
 }

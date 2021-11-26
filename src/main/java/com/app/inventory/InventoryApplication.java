@@ -1,13 +1,9 @@
 package com.app.inventory;
 
-import com.app.inventory.controller.MainController;
 import com.app.inventory.entity.Item;
 import com.app.inventory.service.InventoryService;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.List;
@@ -49,10 +45,9 @@ public class InventoryApplication {//extends SpringBootServletInitializer {
 
 //		service.removeItemsFromOffice(1137007, 3, 500);
 
-		List<Item> items = service.getItemsByOffice(700);
-
+		List<Item> items = service.getItemsByInvNumberOrOfficeNumber(700, "office");
 		for(Item it: items)
-			System.out.println("Number = " + it.getNumber() + " Description: " + it.getDescription() + " Count items = " + it.getCountItems());
+			System.out.println("Number = " + it.getNumber() + " Description: " + it.getDescription() + " Count items = " + it.getCountItems() +
+					" Office number = " + it.getOffice().getOfficeNumber());
 	}
-
 }

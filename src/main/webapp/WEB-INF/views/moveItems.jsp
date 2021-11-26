@@ -1,5 +1,10 @@
 <html>
 <style>
+
+body {
+    background: linear-gradient(to right,#2c5364, #203a43, #0f2027);
+}
+
 .button {
   background-color: #008CBA;
   border: none;
@@ -14,7 +19,7 @@
   text-decoration: none;
   cursor: pointer;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 4px;
 }
 
 .button:hover {opacity: 1}
@@ -28,22 +33,11 @@ input {
   width: 100%;
 }
 
-textarea {
-  border: 2px solid #ccc;
-  padding: 10px;
-  box-sizing: border-box;
-  background-color: lightblue;
-  border-radius: 4px;
-  width: 100%;
-  resize: vertical;
-  max-height: 200px;
-  min-height: 100px;
-}
-
 label {
-  padding: 6px 0px 25px 0;
+  text-align: initial;
   display: inline-block;
-  font-size: 15pt;
+  font-size: 16pt;
+  color: lightblue;
 }
 .col-50 {
   float: left;
@@ -58,19 +52,16 @@ label {
 }
 
 .container {
-  border-radius: 10px;
-  background-color: #f2f2f2;
-  padding: 10px;
-  width: 25%;
-
-  position: absolute;
-  left: 50%;
-  top: 5%;
-  transform: translate(-50%, 0%);
+    width: 25%;
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%, 0%);
 }
 
 h1{
   text-align: center;
+  color: lightblue;
 }
 </style>
 <body>

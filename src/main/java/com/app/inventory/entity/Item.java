@@ -34,9 +34,11 @@ public class Item {
         this.office.setOfficeNumber(off_number);
     }
 
-    public Item(int number, String description, int countItems){
+    public Item(int number, String description, int countItems, int officeNumber){
         this.number = number;
         this.description = description;
         this.countItems = countItems;
+        this.office = new Office();
+        this.office.setOfficeNumber(officeNumber);
     }
 }

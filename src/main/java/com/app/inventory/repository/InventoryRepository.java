@@ -127,12 +127,17 @@ public class InventoryRepository {
     }
 
     public List<Item> getItemsByOffice(int numberOffice) {
-        TypedQuery<Item> itemFromOffice = entityManager.
-                createQuery("select new Item(i.number, i.description, i.countItems) from Item i left join i.office io where io.officeNumber = :officeNumber", Item.class).
+        TypedQuery<Item> itemByOfficeNumber = entityManager.
+                createQuery("select new Item(i.number, i.description, i.countItems, io.officeNumber) from Item i right join i.office io where io.officeNumber = :officeNumber", Item.class).
                 setParameter("officeNumber", numberOffice);
-        return itemFromOffice.getResultList();
+        return itemByOfficeNumber.getResultList();
     }
 
-
+    public List<Item> getItemsByInvNumber(int invNumber) {
+        TypedQuery<Item> itemByInvNumber = entityManager.
+                createQuery("select new Item(i.number, i.description, i.countItems, io.officeNumber) from Item i left join i.office io where i.number = :invNumber", Item.class).
+                setParameter("invNumber", invNumber);
+        return itemByInvNumber.getResultList();
+    }
 
 }

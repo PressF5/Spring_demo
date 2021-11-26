@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -51,6 +50,7 @@ public class MainController {
     public String remove() {
         return "removeItems";
     }
+
     @RequestMapping("/removedInventory")
     public String removed(@RequestParam("fromOffice") int fromOffice, @RequestParam("invNumber") int invNumber,
                           @RequestParam("countItems") int countItems) {
@@ -58,8 +58,16 @@ public class MainController {
         return "redirect:/removeInventory";
     }
 
+    @RequestMapping("/search")
+    public String search() {
+        return "search";
+    }
 
-
-
+    @RequestMapping("/searched")
+    public String searched(Model model, @RequestParam("officeOrInvNumber") int search, @RequestParam("choice") String select) {
+        List<Item> items = inventoryService.getItemsByInvNumberOrOfficeNumber(search, select);
+        model.addAttribute("listItems", items);
+        return "items";
+    }
 
 }
