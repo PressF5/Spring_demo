@@ -70,4 +70,17 @@ public class MainController {
         return "items";
     }
 
+    @RequestMapping("/updateInfo")
+    public String updateInfo(@RequestParam("itemId") int itemId, Model model) {
+        Item item = inventoryService.getItemById(itemId);
+        model.addAttribute("item", item);
+        return "addItems";
+    }
+
+    @RequestMapping("/deleteItem")
+    public String deleteItem(@RequestParam("itemId") int itemId) {
+        inventoryService.deleteItemById(itemId);
+        return "redirect:/search";
+    }
+
 }

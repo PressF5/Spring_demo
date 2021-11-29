@@ -20,6 +20,8 @@ public class InventoryRepository {
                 createQuery("select new Item(i.id, i.number, i.description, i.countItems, io.id, io.officeNumber) from Item i left join i.office io where i.number = :invNumber and io.officeNumber = :officeNumber", Item.class).
                 setParameter("invNumber", item.getNumber()).
                 setParameter("officeNumber", item.getOffice().getOfficeNumber());
+
+        if(item.getId() == 0){
         if (itemOffice.getResultList().size() != 0) {
             Item item1 = itemOffice.getSingleResult();
             item1.setCountItems(item1.getCountItems() + item.getCountItems());
@@ -30,7 +32,8 @@ public class InventoryRepository {
             if (office.getResultList().size() != 0)
                 item.getOffice().setId(office.getSingleResult().getId());
             entityManager.merge(item);
-        }
+        }} else if(item.getId() > 0)
+            entityManager.merge(item);
     }
 
     public void moveInventory(int fromOffice, int toOffice, int invNumber, int countItems) {
@@ -128,16 +131,26 @@ public class InventoryRepository {
 
     public List<Item> getItemsByOffice(int numberOffice) {
         TypedQuery<Item> itemByOfficeNumber = entityManager.
-                createQuery("select new Item(i.number, i.description, i.countItems, io.officeNumber) from Item i right join i.office io where io.officeNumber = :officeNumber", Item.class).
+                createQuery("select new Item(i.id, i.number, i.description, i.countItems, io.id, io.officeNumber) from Item i right join i.office io where io.officeNumber = :officeNumber", Item.class).
                 setParameter("officeNumber", numberOffice);
         return itemByOfficeNumber.getResultList();
     }
 
     public List<Item> getItemsByInvNumber(int invNumber) {
         TypedQuery<Item> itemByInvNumber = entityManager.
-                createQuery("select new Item(i.number, i.description, i.countItems, io.officeNumber) from Item i left join i.office io where i.number = :invNumber", Item.class).
+                createQuery("select new Item(i.id, i.number, i.description, i.countItems, io.id, io.officeNumber) from Item i left join i.office io where i.number = :invNumber", Item.class).
                 setParameter("invNumber", invNumber);
         return itemByInvNumber.getResultList();
     }
 
+    public Item getItemById(int itemId) {
+        return entityManager.createQuery("from Item where id = :id", Item.class).
+                setParameter("id", itemId).getSingleResult();
+    }
+
+    public void deleteItemById(int itemId) {
+        entityManager.createQuery("delete Item where id = :id").
+                setParameter("id", itemId).
+                executeUpdate();
+    }
 }

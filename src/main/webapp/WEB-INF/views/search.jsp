@@ -29,8 +29,7 @@ input {
   background-color: lightblue;
   border-radius: 4px;
   width: 100%;
-
-  background-image: url('https://icons.iconarchive.com/icons/jommans/briefness/16/Search-icon.png');
+  background-image: url("https://icons.iconarchive.com/icons/jommans/briefness/16/Search-icon.png");
   background-position: 5px 11px;
   background-repeat: no-repeat;
   padding: 12px 10px 10px 25px;

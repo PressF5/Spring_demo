@@ -32,4 +32,14 @@ public class InventoryService {
         else
             return inventoryRepository.getItemsByInvNumber(invNumberOrNumberOffice);
     }
+
+    @Transactional
+    public Item getItemById(int itemId) {
+        return inventoryRepository.getItemById(itemId);
+    }
+
+    @Transactional
+    public void deleteItemById(int itemId) {
+        inventoryRepository.deleteItemById(itemId);
+    }
 }
