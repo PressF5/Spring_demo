@@ -48,6 +48,11 @@ public class InventoryApplication {//extends SpringBootServletInitializer {
 		List<Item> items = service.getItemsByInvNumberOrOfficeNumber(700, "office");
 		for(Item it: items)
 			System.out.println("Number = " + it.getNumber() + " Description: " + it.getDescription() + " Count items = " + it.getCountItems() +
-					" Office number = " + it.getOffice().getOfficeNumber());
+					" Office id = " + it.getOffice().getId() + " Office number = " + it.getOffice().getOfficeNumber());
+		System.out.println("================================================================================");
+		List<Item> items2 = service.getItemsByInvNumberOrOfficeNumber(1137007, "inv");
+		for(Item it: items2)
+			System.out.println("Number = " + it.getNumber() + " Description: " + it.getDescription() + " Count items = " + it.getCountItems() +
+					" Office id = " + it.getOffice().getId() + " Office number = " + it.getOffice().getOfficeNumber());
 	}
 }

@@ -86,6 +86,7 @@ h1{
         <form:form action="saveInventory" modelAttribute="item">
 
         <form:hidden path="id"/>
+        <form:hidden path="office.id"/>
 
 <div class="row">
         <div class="col-50">

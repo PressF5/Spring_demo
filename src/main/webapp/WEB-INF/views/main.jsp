@@ -1,7 +1,7 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <style>
-
 body {
     background: linear-gradient(to right,#2c5364, #203a43, #0f2027);
 }

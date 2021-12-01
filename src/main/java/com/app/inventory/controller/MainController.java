@@ -82,5 +82,4 @@ public class MainController {
         inventoryService.deleteItemById(itemId);
         return "redirect:/search";
     }
-
 }
