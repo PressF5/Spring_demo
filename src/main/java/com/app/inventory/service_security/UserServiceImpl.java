@@ -6,23 +6,50 @@ import com.app.inventory.repo.RoleRepo;
 import com.app.inventory.repo.UserRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
-import java.util.List;
+import java.util.*;
 
 @Service
-@RequiredArgsConstructor
 @Transactional
 @Slf4j
-public class UserServiceImpl implements UserService{
-    private final UserRepo userRepo;
-    private final RoleRepo roleRepo;
+public class UserServiceImpl implements UserService, UserDetailsService {
+    @Autowired
+    private UserRepo userRepo;
+    @Autowired
+    private RoleRepo roleRepo;
+    @Autowired
+    @Qualifier("passwordEncoder")
+    private PasswordEncoder passwordEncoder;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepo.findByUsername(username);
+        if(Objects.isNull(user)) {
+            log.error("User not found in the DB");
+            throw new UsernameNotFoundException("User not found in the DB");
+        } else {
+            log.info("User found in the DB: {}", username);
+        }
+        Collection<GrantedAuthority> authorities = new HashSet<>();
+        user.getRoles().forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getName())));
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
+    }
 
     @Override
     public User saveUser(User user) {
         log.info("Saving new user {} to the DB", user.getName());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepo.save(user);
     }
 
