@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style3.css}"/>
+</head>
+<body>
+<table id="custom">
+  <tr>
+    <th>Inventory Number</th>
+    <th>Description</th>
+    <th>Count items</th>
+    <th>Office number</th>
+    <th>Operations</th>
+  </tr>
+<!--  <c:forEach var="item" items="${listItems}">-->
+
+<!--    <c:url var="updateButton" value="/updateInfo">-->
+<!--      <c:param name="itemId" value="${item.id}"/></c:url>-->
+
+<!--    <c:url var="deleteButton" value="/deleteItem">-->
+<!--      <c:param name="itemId" value="${item.id}"/></c:url>-->
+
+    <tr th:each="item: ${listItems}">
+      <td th:text="${item.number}" />
+      <td th:text="${item.description}" />
+      <td th:text="${item.countItems}" />
+      <td th:text="${item.office.officeNumber}" />
+<!--    </tr>-->
+<!--  -->
+<!--    <tr>-->
+<!--      <td>${item.number}</td>-->
+<!--      <td>${item.description}</td>-->
+<!--      <td>${item.countItems}</td>-->
+<!--      <td>${item.office.officeNumber}</td>-->
+      <td>
+<!--        <button class="button" onclick="window.location.href='${updateButton}'">Update</button>-->
+<!--        <button class="button" onclick="window.location.href='${deleteButton}'">Delete</button>-->
+        <a th:href="@{/updateInfo(itemId=${item.id})}">
+          <button class="button">
+            <span>Update</span>
+          </button>
+        </a>
+        <a th:href="@{/deleteItem(itemId=${item.id})}">
+          <button class="button">
+            <span>Delete</span>
+          </button>
+        </a>
+      </td>
+    </tr>
+<!--  </c:forEach>-->
+</table>
+</body>
+</html>
+
+

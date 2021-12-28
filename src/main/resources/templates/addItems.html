@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style1.css}"/>
+</head>
+<body>
+<br>
+<br>
+<div class="container">
+    <h1>Save/Update items</h1>
+    <form th:action="@{/saveInventory}" method="POST" th:object="${item}">
+
+        <div class="row">
+            <div class="col-50">
+                <label>Inventory number</label>
+            </div>
+            <div class="col-50">
+                <input type="number" placeholder="Number of items" th:field="*{number}"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-50">
+                <label>Inventory description</label>
+            </div>
+            <div class="col-50">
+                <textarea placeholder="Description" th:field="*{description}"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-50">
+                <label>Count of items</label>
+            </div>
+            <div class="col-50">
+                <input type="number" placeholder="Count of items" th:field="*{countItems}"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-50">
+                <label>Office number</label>
+            </div>
+            <div class="col-50">
+                <input type="number" placeholder="Office number" th:field="*{office.officeNumber}"/>
+            </div>
+        </div>
+        <div class="row">
+            <button class="button" type="submit">Save</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

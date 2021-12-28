@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style5.css}"/>
+</head>
+<body>
+<div class="container">
+    <h1>Remove items</h1>
+    <form action="removedInventory">
+        <div class="row">
+            <div class="col-50">
+                <label>From office</label>
+            </div>
+            <div class="col-50">
+                <input type="number" name="fromOffice" placeholder="From office"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-50">
+                <label>Inventory number</label>
+            </div>
+            <div class="col-50">
+                <input type="number" name="invNumber" placeholder="Inventory number"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-50">
+                <label>Count items</label>
+            </div>
+            <div class="col-50">
+                <input type="number" name="countItems" placeholder="Count items"/>
+            </div>
+        </div>
+        <button class="button" type="submit">Remove</button>
+    </form>
+</div>
+</body>
+</html>

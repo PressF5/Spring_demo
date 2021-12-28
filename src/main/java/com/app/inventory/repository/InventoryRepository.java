@@ -44,7 +44,7 @@ public class InventoryRepository {
 
     public List<Item> getItemsByOffice(int numberOffice) {
         TypedQuery<Item> itemByOfficeNumber = entityManager.
-                createQuery("select new Item(i.id, i.number, i.description, i.countItems, io.id, io.officeNumber) from Item i right join i.office io where io.officeNumber = :officeNumber", Item.class).
+                createQuery("select new Item(i.id, i.number, i.description, i.countItems, io.id, io.officeNumber) from Item i left join i.office io where io.officeNumber = :officeNumber", Item.class).
                 setParameter("officeNumber", numberOffice);
         return itemByOfficeNumber.getResultList();
     }

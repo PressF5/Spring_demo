@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class=parent>
+    <h1>Make a choose</h1>
+
+    <button class="button" th:onclick="window.location.href='addInventory'" style="vertical-align:middle"><span>Add inventory to the office </span>
+    </button>
+
+<!--    <a th:href="@{/addInventory}">-->
+<!--        <button class="button" style="vertical-align:middle">-->
+<!--            <span>Add inventory to the office </span>-->
+<!--        </button>-->
+<!--    </a>-->
+
+    <button class="button" th:onclick="window.location.href='moveInventory'" style="vertical-align:middle"><span>Move inventory from the office to the office </span>
+    </button>
+
+    <button class="button" th:onclick="window.location.href='removeInventory'" style="vertical-align:middle"><span>Remove inventory from the office </span>
+    </button>
+
+    <button class="button" th:onclick="window.location.href='search'" style="vertical-align:middle"><span>Search </span>
+    </button>
+
+</div>
+</body>
+</html>

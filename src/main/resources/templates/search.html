@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style4.css}"/>
+</head>
+<body>
+<div class="container">
+    <h1>Search</h1>
+    <form action="searched" method="post">
+        <div class="row">
+            <div class="col-70-left">
+                <input type="number" name="officeOrInvNumber" placeholder="Number of office or inventory number"/>
+            </div>
+            <div class="col-15-left">
+                <select name="choice">
+                    <option value="office">Office</option>
+                    <option value="invNumber">Inventory number</option>
+                </select>
+            </div>
+            <div class="col-12-right">
+                <button class="button" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+<br>
+<br>
+</body>
+</html>

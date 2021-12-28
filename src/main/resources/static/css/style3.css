@@ -1,0 +1,42 @@
+body {
+    background: linear-gradient(to right,#2c5364, #203a43, #0f2027);
+}
+
+.button {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    font-size: 16px;
+    margin: 0px 1px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.button:hover {opacity: 1}
+
+#custom {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#custom td, #custom th {
+    border: 1px solid lightblue;
+    padding: 8px;
+}
+
+#custom tr {background-color: lightblue;}
+
+#custom tr:hover {background-color: #008cff;}
+
+#custom th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #008CBA;
+    color: white;
+}

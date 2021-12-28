@@ -1,19 +1,12 @@
 package com.app.inventory;
 
-import com.app.inventory.model.Role;
-import com.app.inventory.model.User;
 import com.app.inventory.service.InventoryService;
-import com.app.inventory.service_security.UserService;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.ArrayList;
-import java.util.HashSet;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication//(scanBasePackages = "com.app.inventory")
 //@EnableAutoConfiguration
@@ -66,10 +59,10 @@ public class InventoryApplication {//extends SpringBootServletInitializer {
 //===============================================================================================================================================
 	}
 
-	@Bean
-	PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+//	@Bean
+//	PasswordEncoder passwordEncoder() {
+//		return new BCryptPasswordEncoder();
+//	}
 
 //	@Bean
 //	CommandLineRunner run(UserService userService) {
