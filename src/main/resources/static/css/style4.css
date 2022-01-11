@@ -3,50 +3,50 @@ body {
 }
 
 .button {
-  background-color: #008CBA;
-  border: none;
-  color: white;
-  padding: 12px;
-  text-align: center;
-  font-size: 16px;
-  opacity: 0.6;
-  transition: 0.3s;
-  display: inline-block;
-  text-decoration: none;
-  cursor: pointer;
-  width: 100%;
-  border-radius: 4px;
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-size: 16px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
 }
 
 .button:hover {opacity: 1}
 
 input {
-  border: 2px solid #ccc;
-  padding: 10px;
-  box-sizing: border-box;
-  background-color: lightblue;
-  border-radius: 4px;
-  width: 100%;
-  background-image: url("/icon/searchicon.png");
-  background-position: 5px 11px;
-  background-repeat: no-repeat;
-  padding: 12px 10px 10px 25px;
+    border: 2px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: lightblue;
+    border-radius: 4px;
+    width: 100%;
+    background-image: url("/icon/searchicon.png");
+    background-position: 5px 11px;
+    background-repeat: no-repeat;
+    padding: 12px 10px 10px 25px;
 }
 
 select {
-  border: 2px solid #ccc;
-  padding: 10px;
-  box-sizing: border-box;
-  background-color: lightblue;
-  border-radius: 4px;
-  width: 100%;
+    border: 2px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: lightblue;
+    border-radius: 4px;
+    width: 100%;
 }
 
 label {
-  padding: 6px 0px 25px 0;
-  display: inline-block;
-  font-size: 15pt;
-  color: lightblue;
+    padding: 6px 0px 25px 0;
+    display: inline-block;
+    font-size: 15pt;
+    color: lightblue;
 }
 
 .col-70-left {
@@ -67,20 +67,20 @@ label {
 }
 
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .container {
-  width: 60%;
-  position: absolute;
-  left: 50%;
-  top: 5%;
-  transform: translate(-50%, 0%);
+    width: 60%;
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%, 0%);
 }
 
 h1{
-  text-align: center;
-  color: lightblue;
+    text-align: center;
+    color: lightblue;
 }

@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" th:href="@{/css/style4.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style3.css}"/>
+    <script src="webjars/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 <div class="container">
     <h1>Search</h1>
-    <form action="searched" method="post">
+    <form method="post">
         <div class="row">
             <div class="col-70-left">
-                <input type="number" name="officeOrInvNumber" placeholder="Number of office or inventory number"/>
+                <input type="number" id="officeOrInvNumber" name="officeOrInvNumber" placeholder="Number of office or inventory number"/>
             </div>
             <div class="col-15-left">
-                <select name="choice">
+                <select name="choice" id="choice">
                     <option value="office">Office</option>
                     <option value="invNumber">Inventory number</option>
                 </select>
@@ -24,7 +26,70 @@
         </div>
     </form>
 </div>
-<br>
-<br>
+<div id="margin">
+<table id="custom">
+    <thead id="head">
+    </thead>
+    <tbody id="items">
+    </tbody>
+</table>
+</div>
+
+<script>
+$(document).ready(function () {
+    $("form").submit(function (event) {
+        var formData = {
+            officeOrInvNumber: $("#officeOrInvNumber").val(),
+            choice: $("#choice").val()
+};
+
+$.ajax({
+    url: "/searchItems",
+    type: "POST",
+    data: formData
+}).done(function(data) {
+    $('#items').empty();
+    $('#head').empty();
+
+    var tableHead =
+        '<th>Inventory Number</th>' +
+        '<th>Description</th>' +
+        '<th>Count items</th>' +
+        '<th>Office number</th>' +
+        '<th>Operations</th>';
+
+    $('#head').append(tableHead);
+
+    var html = '';
+
+    for (let i = 0; i < data.length; i++) {
+        html +=
+        '<tr>'+
+            '<td>' + data[i].number + '</td>' +
+            '<td>' + data[i].description + '</td>' +
+            '<td>' + data[i].countItems + '</td>' +
+            '<td>' + data[i].office.officeNumber + '</td>' +
+
+            '<td>' +
+                '<a href="/updateInfo/${data[i].id}">' +
+                    '<button class="buttonTable">' +
+                        '<span>Update</span>' +
+                    '</button>' +
+                '</a>' +
+
+                '<a href="/deleteItem/${data[i].id}">' +
+                    '<button class="buttonTable">' +
+                        '<span>Delete</span>' +
+                    '</button>' +
+                '</a>' +
+            '</td>' +
+        '</tr>';
+    }
+    $('#items').append(html);
+});
+    event.preventDefault();
+});
+});
+</script>
 </body>
 </html>

@@ -65,21 +65,21 @@ public class MainController {
     }
 
     @RequestMapping("/searched")
-    public String searched(Model model, @RequestParam("officeOrInvNumber") int search, @RequestParam("choice") String select) {
+    public String searched(@RequestParam("officeOrInvNumber") int search, @RequestParam("choice") String select, Model model) {
         List<Item> items = inventoryService.getItemsByInvNumberOrOfficeNumber(search, select);
         model.addAttribute("listItems", items);
-        return "items";
+        return "searched :: resultsList";
     }
 
-    @RequestMapping("/updateInfo")
-    public String updateInfo(@RequestParam("itemId") int itemId, Model model) {
+    @RequestMapping("/updateInfo/{id}")
+    public String updateInfo(@PathVariable("id") int itemId, Model model) {
         Item item = inventoryService.getItemById(itemId);
         model.addAttribute("item", item);
         return "addItems";
     }
 
-    @RequestMapping("/deleteItem")
-    public String deleteItem(@RequestParam("itemId") int itemId) {
+    @RequestMapping("/deleteItem/{id}")
+    public String deleteItem(@PathVariable("id") int itemId) {
         inventoryService.deleteItemById(itemId);
         return "redirect:/search";
     }
