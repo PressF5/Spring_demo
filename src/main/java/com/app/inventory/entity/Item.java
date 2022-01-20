@@ -41,4 +41,14 @@ public class Item {
         this.office = new Office();
         this.office.setOfficeNumber(officeNumber);
     }
+    @Override
+    public String toString() {
+        return """
+                id = %s
+                number = %s
+                description = %s
+                countItems = %s
+                office = %s
+                """.formatted(id, number, description, countItems, office.getOfficeNumber());
+    }
 }

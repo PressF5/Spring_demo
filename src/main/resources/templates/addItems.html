@@ -10,7 +10,9 @@
 <div class="container">
     <h1>Save/Update items</h1>
     <form th:action="@{/saveInventory}" method="POST" th:object="${item}">
-
+        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{office.id}"/>
+        <input type="hidden" th:field="*{office.officeNumber}"/>
         <div class="row">
             <div class="col-50">
                 <label>Inventory number</label>

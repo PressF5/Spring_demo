@@ -64,32 +64,41 @@ $.ajax({
 
     for (let i = 0; i < data.length; i++) {
         html +=
-        '<tr>'+
-            '<td>' + data[i].number + '</td>' +
-            '<td>' + data[i].description + '</td>' +
-            '<td>' + data[i].countItems + '</td>' +
-            '<td>' + data[i].office.officeNumber + '</td>' +
+        `<tr id = ${i}>
+            <td> ${data[i].number} </td>
+            <td> ${data[i].description} </td>
+            <td> ${data[i].countItems} </td>
+            <td> ${data[i].office.officeNumber} </td>
 
-            '<td>' +
-                '<a href="/updateInfo/${data[i].id}">' +
-                    '<button class="buttonTable">' +
+            <td>` +
+                `<a href="/updateInfo/${data[i].id}">` +
+                    '<button id="update" class="buttonTable">' +
                         '<span>Update</span>' +
                     '</button>' +
                 '</a>' +
 
-                '<a href="/deleteItem/${data[i].id}">' +
-                    '<button class="buttonTable">' +
-                        '<span>Delete</span>' +
-                    '</button>' +
-                '</a>' +
-            '</td>' +
-        '</tr>';
+               `<button id="delete" class="buttonTable" onclick="deleteRow(this, ${data[i].id})">` +
+                    '<span>Delete</span>' +
+               '</button>' +
+            `</td>
+        </tr>`;
     }
     $('#items').append(html);
 });
     event.preventDefault();
 });
 });
+
+function deleteRow(r, id) {
+  var i = r.parentNode.parentNode.rowIndex;
+  document.getElementById("custom").deleteRow(i);
+
+   $.ajax({
+        url: /deleteItem/ + id,
+        type: 'GET',
+        });
+};
+
 </script>
 </body>
 </html>
