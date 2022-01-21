@@ -28,9 +28,6 @@ public class MainController {
 
     @RequestMapping("/saveInventory")
     public String save(@ModelAttribute("item") Item item) {
-
-        System.out.println(item);
-
         inventoryService.saveInventory(item);
         return "redirect:/addInventory";
     }
@@ -75,7 +72,6 @@ public class MainController {
     public String updateInfo(@PathVariable("id") int itemId, Model model) {
         Item item = inventoryService.getItemById(itemId);
         model.addAttribute("item", item);
-        System.out.println("BEFORE insert to bd\n" + item);
         return "addItems";
     }
 }
