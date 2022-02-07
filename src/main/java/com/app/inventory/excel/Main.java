@@ -1,67 +1,40 @@
-package com.app.inventory.controller;
+package com.app.inventory.excel;
 
-import com.app.inventory.entity.Item;
-import com.app.inventory.service.InventoryService;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.CreationHelper;
-import org.apache.poi.ss.usermodel.HorizontalAlignment;
-import org.apache.poi.ss.usermodel.VerticalAlignment;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
-@RestController
-@Scope("session")
-public class MainRestController {
-    @Autowired
-    private InventoryService inventoryService;
+public class Main {
+    public static void main(String[] args) throws IOException {
+        Item it1 = new Item(1, "Сисблокqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqwqw", 3, 100);
+        Item it2 = new Item(2, "Моник", 3, 101);
+        Item it3 = new Item(3, "Клава", 5, 102);
+        Item it4 = new Item(4, "Мышь", 6, 103);
+        Item it5 = new Item(5, "Колонки", 1, 104);
 
-    private List<Item> resultList;
+        List<Item> items = List.of(it1, it2, it3, it4, it5);
 
-    @PostMapping(value = "/searchItems")
-    public List<Item> searched(@RequestParam("officeOrInvNumber") int search, @RequestParam("choice") String select, Model model) {
-        resultList = inventoryService.getItemsByInvNumberOrOfficeNumber(search, select);
-        return resultList;
-    }
+//C:\Users\Komp\Desktop\Excel
 
-    @GetMapping("/deleteItem/{id}")
-    public void deleteItem(@PathVariable("id") int itemId) {
-        inventoryService.deleteItemById(itemId);
-        //return "redirect:/search";
-    }
-
-    @GetMapping("/downloadExcel")
-    public void exportToExcel(HttpServletResponse response) throws IOException {
-        response.setContentType("application/octet-stream");
-        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
-        String currentDateTime = dateFormatter.format(new Date());
-
-        String headerKey = "Content-Disposition";
-        String headerValue = "attachment; filename=Inventory_search_" + currentDateTime + ".xlsx";
-        response.setHeader(headerKey, headerValue);
-
-        ServletOutputStream outputStream = response.getOutputStream();
-
-        List<Item> items = resultList;
-
+// Создание книги Excel
         XSSFWorkbook book = new XSSFWorkbook();
+        FileOutputStream fileOut = new FileOutputStream("C:/Users/Komp/Desktop/Excel/workbook.xlsx");
 
+// создания страниц
         XSSFSheet sheet = book.createSheet("List of inventory");
-
+//        sheet.autoSizeColumn(0);
+//        sheet.autoSizeColumn(1);
+//        sheet.autoSizeColumn(2);
+//        sheet.autoSizeColumn(3);
         sheet.setColumnWidth(0, 9000);
         sheet.setColumnWidth(1, 15000);
         sheet.setColumnWidth(2, 10000);
         sheet.setColumnWidth(3, 7000);
-
+// создание строк
         XSSFFont font = book.createFont();
         font.setFontHeightInPoints((short) 16);
         font.setFontName("Times New Roman");
@@ -81,7 +54,7 @@ public class MainRestController {
         style1.setFont(fontHead);
 
         XSSFRow head = sheet.createRow(0);
-
+        //head.setRowStyle(style);
         XSSFCell cellHead1 = head.createCell(0);
         cellHead1.setCellType(CellType.STRING);
         cellHead1.setCellStyle(style1);
@@ -104,7 +77,7 @@ public class MainRestController {
 
         for(int i = 0; i < items.size(); i++) {
             XSSFRow row = sheet.createRow(i + 1);
-
+            //row.setRowStyle(style);
             XSSFCell cell1 = row.createCell(0);
             cell1.setCellType(CellType.NUMERIC);
             cell1.setCellStyle(style);
@@ -123,7 +96,7 @@ public class MainRestController {
             XSSFCell cell4 = row.createCell(3);
             cell4.setCellType(CellType.NUMERIC);
             cell4.setCellStyle(style);
-            cell4.setCellValue(items.get(i).getOffice().getOfficeNumber());
+            cell4.setCellValue(items.get(i).getOffice());
         }
 
         XSSFRow dateRow = sheet.createRow(items.size() + 3);
@@ -142,11 +115,16 @@ public class MainRestController {
         cell.setCellStyle(cellDateStyle);
         cell.setCellValue(new Date());
 
-        book.write(outputStream);
-        book.close();
+// создание и форматирование ячеек
+// запись информации в ячейки
 
-        outputStream.close();
-        //resultList = null;
+// Закрытие
+        book.write(fileOut);
+        fileOut.close();
+
+
+
+
+
     }
-
 }

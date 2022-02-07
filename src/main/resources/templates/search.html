@@ -8,20 +8,20 @@
 </head>
 <body>
 <div class="container">
-    <h1>Search</h1>
+    <h1>Поиск</h1>
     <form method="post">
         <div class="row">
             <div class="col-70-left">
-                <input type="number" id="officeOrInvNumber" name="officeOrInvNumber" placeholder="Number of office or inventory number"/>
+                <input type="number" id="officeOrInvNumber" name="officeOrInvNumber" placeholder="Номер кабинета или инвентарный номер"/>
             </div>
             <div class="col-15-left">
                 <select name="choice" id="choice">
-                    <option value="office">Office</option>
-                    <option value="invNumber">Inventory number</option>
+                    <option value="office">Кабинет</option>
+                    <option value="invNumber">Инвентарный номер</option>
                 </select>
             </div>
             <div class="col-12-right">
-                <button class="button" type="submit">Search</button>
+                <button class="button" type="submit">Поиск</button>
             </div>
         </div>
     </form>
@@ -34,7 +34,8 @@
     </tbody>
 </table>
 </div>
-
+<div id="result">
+</div>
 <script>
 $(document).ready(function () {
     $("form").submit(function (event) {
@@ -50,13 +51,14 @@ $.ajax({
 }).done(function(data) {
     $('#items').empty();
     $('#head').empty();
+    $('#result').empty();
 
     var tableHead =
-        '<th>Inventory Number</th>' +
-        '<th>Description</th>' +
-        '<th>Count items</th>' +
-        '<th>Office number</th>' +
-        '<th>Operations</th>';
+        '<th>Инвентарный номер</th>' +
+        '<th>Описание</th>' +
+        '<th>Количество инвентаря</th>' +
+        '<th>Номер кабинета</th>' +
+        '<th>Операции</th>';
 
     $('#head').append(tableHead);
 
@@ -73,17 +75,25 @@ $.ajax({
             <td>` +
                 `<a href="/updateInfo/${data[i].id}">` +
                     '<button id="update" class="buttonTable">' +
-                        '<span>Update</span>' +
+                        '<span>Обновить</span>' +
                     '</button>' +
                 '</a>' +
 
                `<button id="delete" class="buttonTable" onclick="deleteRow(this, ${data[i].id})">` +
-                    '<span>Delete</span>' +
+                    '<span>Списать</span>' +
                '</button>' +
             `</td>
         </tr>`;
     }
     $('#items').append(html);
+
+    var button = `<a href="/downloadExcel">` +
+                    '<button id="download" class="button">' +
+                        '<span>Сформировать Excel файл</span>' +
+                    '</button>' +
+                '</a>';
+
+    $('#result').append(button);
 });
     event.preventDefault();
 });

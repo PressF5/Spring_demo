@@ -8,8 +8,11 @@
 <br>
 <br>
 <div class="container">
-    <h1>Сохранение инвентаря</h1>
-    <form th:action="@{/saveInventory}" method="POST" th:object="${item}">
+    <h1>Обновление инвентаря</h1>
+    <form th:action="@{/updateInventory}" method="POST" th:object="${item}">
+        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{office.id}"/>
+        <input type="hidden" th:field="*{office.officeNumber}"/>
         <div class="row">
             <div class="col-50">
                 <label>Инвентарный номер</label>

@@ -7,11 +7,11 @@
 <body>
 <table id="custom">
   <tr>
-    <th>Inventory Number</th>
-    <th>Description</th>
-    <th>Count items</th>
-    <th>Office number</th>
-    <th>Operations</th>
+    <th>Инвентарный номер</th>
+    <th>Описание</th>
+    <th>Количество инвентаря</th>
+    <th>Номер кабинета</th>
+    <th>Операции</th>
   </tr>
 <!--  <c:forEach var="item" items="${listItems}">-->
 
@@ -38,12 +38,12 @@
 <!--        <button class="button" onclick="window.location.href='${deleteButton}'">Delete</button>-->
         <a th:href="@{/updateInfo(itemId=${item.id})}">
           <button class="button">
-            <span>Update</span>
+            <span>Обновить</span>
           </button>
         </a>
         <a th:href="@{/deleteItem(itemId=${item.id})}">
           <button class="button">
-            <span>Delete</span>
+            <span>Удалить</span>
           </button>
         </a>
       </td>
